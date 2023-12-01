@@ -7,9 +7,10 @@ interface UserCardProps {
   title: string
   // created_at: Date
   comments: number
+  id: string
 }
 
-export function PostCard({ title, comments }: UserCardProps) {
+export function PostCard({ title, comments, id }: UserCardProps) {
 
   const { userGithubData } = useContext(BlogContext)
 
@@ -27,7 +28,7 @@ export function PostCard({ title, comments }: UserCardProps) {
 
 
           <button className='flex gap-2 text-blue'>
-            <span className='uppercase text-xs leading-relaxed font-bold'>Ver no github</span>
+            <a href={`${userGithubData.html_url}/RS_GithubBlogChallenge/issues/${id}`} className='uppercase text-xs leading-relaxed font-bold'>Ver no github</a>
             <ArrowSquareOut className='w-4 h-4' />
           </button>
 
