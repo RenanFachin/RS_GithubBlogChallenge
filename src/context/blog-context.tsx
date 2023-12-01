@@ -4,6 +4,7 @@ import { api } from "../lib/axios";
 interface Post {
   title: string
   body: string
+  number: number
 }
 
 interface GithubDataProps {
@@ -58,14 +59,25 @@ export function BlogProvider({ children }: BlogProviderProps) {
 
     const data = response.data.items
 
-    // console.log(data)
+    console.log(data)
 
     setPost(data)
   }
 
+
+  // Capturando detalhe do post
+  async function fetchPostDetail(){
+    const response = await api.get('/repos/RenanFachin/RS_GithubBlogChallenge/issues/1')
+
+    console.log(response.data)
+  }
+  // 
+
+
   useEffect(() => {
-    fetchPostsFromGithubIssues()
-    fetchGithubData()
+    // fetchPostsFromGithubIssues()
+    // fetchGithubData()
+    // fetchPostDetail()
   }, [])
 
   return (

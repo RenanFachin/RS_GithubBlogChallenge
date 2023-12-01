@@ -20,7 +20,7 @@ export interface GithubDataProps {
 
 export function Blog() {
   const { post, userGithubData } = useContext(BlogContext)
-
+  console.log(post)
 
   return (
     <div className="h-screen">

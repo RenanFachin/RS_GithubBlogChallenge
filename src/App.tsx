@@ -1,11 +1,17 @@
+// Contexto
 import { BlogProvider } from "./context/blog-context";
-import { Blog } from "./pages/Blog";
+
+// Rotas
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from "./Router";
 
 export function App() {
   return (
-    <BlogProvider>
-      <Blog />
-    </BlogProvider>
+    <BrowserRouter>
+      <BlogProvider>
+        <Router />
+      </BlogProvider>
+    </BrowserRouter>
   )
 }
 
