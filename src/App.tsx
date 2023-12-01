@@ -1,6 +1,6 @@
 export function App() {
   return (
-    <h1 className="text-red-600 font-bold text-6xl">Nunito</h1>
+    <h1 className="text-white font-bold text-6xl">Nunito</h1>
   )
 }
 
