@@ -51,7 +51,14 @@ export function Blog() {
       {/* Repassando o estado para o componente */}
       <UserCard userInfo={userGithubData} />
 
-      <SearchForm />
+      <div className="mt-16 max-w-4xl mx-auto flex flex-col gap-3">
+        <div className="flex items-center justify-between">
+          <h2 className="text-base-subtitle text-lg font-bold leading-relaxed">Publicações</h2>
+
+          <span className="text-base-span text-sm leading-relaxed">6 publicações</span>
+        </div>
+        <SearchForm />
+      </div>
 
       <main className="max-w-4xl mx-auto mt-12 grid grid-cols-2 gap-8 pb-32">
         <BlogCard />

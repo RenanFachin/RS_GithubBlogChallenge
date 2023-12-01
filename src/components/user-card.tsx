@@ -9,7 +9,6 @@ interface UserCardProps {
 export function UserCard({ userInfo }: UserCardProps) {
   return (
     <div className="max-w-4xl w-full bg-base-profile py-8 pl-10 pr-8 -mt-24 rounded-xl shadow-lg z-20 mx-auto">
-
       <div className="flex gap-8">
         <img src={userInfo.avatar_url} alt="" className="w-36 h-36" />
 
@@ -51,8 +50,6 @@ export function UserCard({ userInfo }: UserCardProps) {
           </div>
         </div>
       </div>
-
-
     </div >
   )
 }
