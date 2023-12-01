@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Header } from "../components/Header";
 import { UserCard } from "../components/user-card";
 import { api } from "../lib/axios";
 import { SearchForm } from "./components/search-form";
 import { BlogCard } from "./components/blog-card";
+import { BlogContext } from "../context/blog-context";
 
 
 // api.github.com/users/${username}
@@ -20,6 +21,9 @@ export interface GithubDataProps {
 export function Blog() {
   // Iniciando o estado com um objeto vazio do tipo GithubDataProps
   const [userGithubData, setUserGithubData] = useState<GithubDataProps>({} as GithubDataProps)
+
+
+  const { post } = useContext(BlogContext)
 
   async function fetchGithubData() {
     // Chamada para API
