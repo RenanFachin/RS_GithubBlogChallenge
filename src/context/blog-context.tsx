@@ -2,7 +2,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 import { api } from "../lib/axios";
 
 interface Post {
-  title: string,
+  title: string
   body: string
 }
 
@@ -32,7 +32,7 @@ export function BlogProvider({ children }: BlogProviderProps) {
   }
 
   useEffect(() => {
-    // fetchPostsFromGithubIssues()
+    fetchPostsFromGithubIssues()
   }, [])
 
   return (

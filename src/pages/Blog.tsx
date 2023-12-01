@@ -22,6 +22,9 @@ export function Blog() {
   // Iniciando o estado com um objeto vazio do tipo GithubDataProps
   const [userGithubData, setUserGithubData] = useState<GithubDataProps>({} as GithubDataProps)
 
+  const { post } = useContext(BlogContext)
+
+  // Busca dados do usuário
   async function fetchGithubData() {
     // Chamada para API
     const response = await api.get('/users/RenanFachin')
@@ -42,7 +45,7 @@ export function Blog() {
 
   // Realizando o fetch nos dados toda vez que a página for recarregada
   useEffect(() => {
-    // fetchGithubData()
+    fetchGithubData()
   }, [])
 
   return (
@@ -62,12 +65,16 @@ export function Blog() {
       </div>
 
       <main className="max-w-4xl mx-auto mt-12 grid grid-cols-2 gap-8 pb-32">
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
+        {
+          post.map(item => {
+            return (
+              <BlogCard key={item.title} body={item.body} title={item.title} />
+            )
+          })
+
+        }
+
+
       </main>
     </div >
   )
