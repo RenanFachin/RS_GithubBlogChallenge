@@ -1,6 +1,7 @@
 import { ArrowSquareOut, GithubLogo, Buildings, Users } from 'phosphor-react'
 import { GithubDataProps } from '../pages/Blog'
 
+// Criando tipagem dos dados recebidos por propriedades, no caso, userInfo é o state que tem tipo GithubDataProps
 interface UserCardProps {
   userInfo: GithubDataProps
 }
@@ -12,10 +13,10 @@ export function UserCard({ userInfo }: UserCardProps) {
       <div className="flex gap-8">
         <img src={userInfo.avatar_url} alt="" className="w-36 h-36" />
 
-        <div className="mt-2 flex flex-col items-start">
+        <div className="mt-2 flex flex-col items-start w-full">
           <div className="flex items-center justify-between w-full">
             <h1 className="flex-1 text-base-title text-2xl leading-tight font-bold">
-              {userInfo.username}
+              {userInfo.name}
             </h1>
 
             <a
