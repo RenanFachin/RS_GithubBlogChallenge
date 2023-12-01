@@ -42,7 +42,12 @@ export function Blog() {
         {
           post.map(item => {
             return (
-              <BlogCard key={item.title} body={item.body} title={item.title} />
+              <BlogCard
+                key={item.title}
+                body={item.body}
+                title={item.title}
+                number={item.number}
+              />
             )
           })
         }
