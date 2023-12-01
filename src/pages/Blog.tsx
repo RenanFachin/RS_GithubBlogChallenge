@@ -22,9 +22,6 @@ export function Blog() {
   // Iniciando o estado com um objeto vazio do tipo GithubDataProps
   const [userGithubData, setUserGithubData] = useState<GithubDataProps>({} as GithubDataProps)
 
-
-  const { post } = useContext(BlogContext)
-
   async function fetchGithubData() {
     // Chamada para API
     const response = await api.get('/users/RenanFachin')

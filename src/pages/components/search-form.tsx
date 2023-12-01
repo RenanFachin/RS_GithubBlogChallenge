@@ -1,6 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import z from "zod"
+import { BlogContext } from "../../context/blog-context"
+import { useContext } from 'react'
 
 const searchFormSchema = z.object({
   query: z.string()
@@ -9,6 +11,10 @@ const searchFormSchema = z.object({
 type SearchFormInput = z.infer<typeof searchFormSchema>
 
 export function SearchForm() {
+  // utilizando a função de fetch do contexto
+  const { fetchPostsFromGithubIssues } = useContext(BlogContext)
+
+
   const {
     register,
     handleSubmit
@@ -17,8 +23,8 @@ export function SearchForm() {
   })
 
   // data é do tipo searchFormInput e é recebido quando for feito o submit
-  function handleSearchGithubIssues(data: SearchFormInput) {
-    console.log(data)
+  async function handleSearchGithubIssues(data: SearchFormInput) {
+    await fetchPostsFromGithubIssues(data.query)
   }
 
   return (

@@ -8,6 +8,7 @@ interface Post {
 
 interface BlogContextType {
   post: Post[]
+  fetchPostsFromGithubIssues: (query: string) => Promise<void>
 }
 
 export const BlogContext = createContext({} as BlogContextType)
@@ -19,20 +20,23 @@ interface BlogProviderProps {
 export function BlogProvider({ children }: BlogProviderProps) {
   const [post, setPost] = useState<Post[]>([])
 
-  async function loadPostsFromGithubIssues() {
-    const response = await api.get('/search/issues?q=tailwindcss%20repo:RenanFachin/RS_GithubBlogChallenge')
+  // Expor a função de load para fora do contexto
+  async function fetchPostsFromGithubIssues(query: string = '') {
+    const response = await api.get(`/search/issues?q=${query}%20repo:RenanFachin/RS_GithubBlogChallenge`)
 
-    const data = response.data
+    const data = response.data.items
 
-    console.log(data.items)
+    // console.log(data)
+
+    setPost(data)
   }
 
   useEffect(() => {
-    // loadPostsFromGithubIssues()
+    // fetchPostsFromGithubIssues()
   }, [])
 
   return (
-    <BlogContext.Provider value={{ post }}>
+    <BlogContext.Provider value={{ post, fetchPostsFromGithubIssues }}>
       {children}
     </BlogContext.Provider>
   )
