@@ -6,8 +6,19 @@ interface Post {
   body: string
 }
 
+interface GithubDataProps {
+  avatar_url: string
+  bio: string
+  name: string
+  location: string
+  followers: number
+  html_url: string
+  login: string
+}
+
 interface BlogContextType {
   post: Post[]
+  userGithubData: GithubDataProps
   fetchPostsFromGithubIssues: (query: string) => Promise<void>
 }
 
@@ -19,6 +30,27 @@ interface BlogProviderProps {
 
 export function BlogProvider({ children }: BlogProviderProps) {
   const [post, setPost] = useState<Post[]>([])
+  const [userGithubData, setUserGithubData] = useState<GithubDataProps>({} as GithubDataProps)
+
+
+  // Busca dados do usuário
+  async function fetchGithubData() {
+    // Chamada para API
+    const response = await api.get('/users/RenanFachin')
+    const data = response.data
+    // console.log(data)
+
+    // Armazenando cada dado de dentro do objeto conforme o retorno da API
+    setUserGithubData({
+      name: data.name,
+      avatar_url: data.avatar_url,
+      bio: data.bio,
+      followers: data.followers,
+      html_url: data.html_url,
+      location: data.location,
+      login: data.login
+    })
+  }
 
   // Expor a função de load para fora do contexto
   async function fetchPostsFromGithubIssues(query: string = '') {
@@ -33,10 +65,11 @@ export function BlogProvider({ children }: BlogProviderProps) {
 
   useEffect(() => {
     fetchPostsFromGithubIssues()
+    fetchGithubData()
   }, [])
 
   return (
-    <BlogContext.Provider value={{ post, fetchPostsFromGithubIssues }}>
+    <BlogContext.Provider value={{ post, userGithubData, fetchPostsFromGithubIssues }}>
       {children}
     </BlogContext.Provider>
   )

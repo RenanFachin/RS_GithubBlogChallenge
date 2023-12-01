@@ -1,7 +1,7 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { Header } from "../components/Header";
 import { UserCard } from "../components/user-card";
-import { api } from "../lib/axios";
+// import { api } from "../lib/axios";
 import { SearchForm } from "./components/search-form";
 import { BlogCard } from "./components/blog-card";
 import { BlogContext } from "../context/blog-context";
@@ -19,34 +19,8 @@ export interface GithubDataProps {
 }
 
 export function Blog() {
-  // Iniciando o estado com um objeto vazio do tipo GithubDataProps
-  const [userGithubData, setUserGithubData] = useState<GithubDataProps>({} as GithubDataProps)
+  const { post, userGithubData } = useContext(BlogContext)
 
-  const { post } = useContext(BlogContext)
-
-  // Busca dados do usuário
-  async function fetchGithubData() {
-    // Chamada para API
-    const response = await api.get('/users/RenanFachin')
-    const data = response.data
-    // console.log(data)
-
-    // Armazenadno cada dado de dentro do objeto conforme o retorno da API
-    setUserGithubData({
-      name: data.name,
-      avatar_url: data.avatar_url,
-      bio: data.bio,
-      followers: data.followers,
-      html_url: data.html_url,
-      location: data.location,
-      login: data.login
-    })
-  }
-
-  // Realizando o fetch nos dados toda vez que a página for recarregada
-  useEffect(() => {
-    fetchGithubData()
-  }, [])
 
   return (
     <div className="h-screen">
@@ -71,10 +45,7 @@ export function Blog() {
               <BlogCard key={item.title} body={item.body} title={item.title} />
             )
           })
-
         }
-
-
       </main>
     </div >
   )
