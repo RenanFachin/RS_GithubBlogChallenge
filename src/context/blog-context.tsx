@@ -66,8 +66,8 @@ export function BlogProvider({ children }: BlogProviderProps) {
 
 
   useEffect(() => {
-    fetchPostsFromGithubIssues()
-    fetchGithubData()
+    // fetchPostsFromGithubIssues()
+    // fetchGithubData()
   }, [])
 
   return (

@@ -9,11 +9,11 @@ interface UserCardProps {
 export function UserCard({ userInfo }: UserCardProps) {
   return (
     <div className="max-w-4xl w-full bg-base-profile py-8 pl-10 pr-8 -mt-24 rounded-xl shadow-lg z-20 mx-auto">
-      <div className="flex gap-8">
+      <div className="flex flex-col items-center md:flex-row gap-8">
         <img src={userInfo.avatar_url} alt="" className="w-36 h-36" />
 
         <div className="mt-2 flex flex-col items-start w-full">
-          <div className="flex items-center justify-between w-full">
+          <div className="flex flex-col md:flex-row md:items-center justify-between w-full">
             <h1 className="flex-1 text-base-title text-2xl leading-tight font-bold">
               {userInfo.name}
             </h1>
@@ -32,7 +32,7 @@ export function UserCard({ userInfo }: UserCardProps) {
             {userInfo.bio}
           </span>
 
-          <div className='mt-6 flex items-center justify-center gap-6'>
+          <div className='mt-6 flex flex-col md:flex-row md:items-center justify-center gap-6'>
             <div className='flex items-center gap-2'>
               <GithubLogo className='w-5 h-5 text-base-label' />
               <p className='text-base-subtitle leading-relaxed'>{userInfo.login}</p>

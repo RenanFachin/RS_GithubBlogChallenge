@@ -26,32 +26,34 @@ export function Blog() {
     <div className="h-screen">
       <Header />
 
-      {/* Repassando o estado para o componente */}
-      <UserCard userInfo={userGithubData} />
+      <div className="mx-4">
+        {/* Repassando o estado para o componente */}
+        <UserCard userInfo={userGithubData} />
 
-      <div className="mt-16 max-w-4xl mx-auto flex flex-col gap-3">
-        <div className="flex items-center justify-between">
-          <h2 className="text-base-subtitle text-lg font-bold leading-relaxed">Publicações</h2>
+        <div className="mt-16 max-w-4xl mx-auto flex flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <h2 className="text-base-subtitle text-lg font-bold leading-relaxed">Publicações</h2>
 
-          <span className="text-base-span text-sm leading-relaxed">6 publicações</span>
+            <span className="text-base-span text-sm leading-relaxed">6 publicações</span>
+          </div>
+          <SearchForm />
         </div>
-        <SearchForm />
-      </div>
 
-      <main className="max-w-4xl mx-auto mt-12 grid grid-cols-2 gap-8 pb-32">
-        {
-          post.map(item => {
-            return (
-              <BlogCard
-                key={item.title}
-                body={item.body}
-                title={item.title}
-                number={item.number}
-              />
-            )
-          })
-        }
-      </main>
+        <main className="max-w-4xl mx-auto mt-12 flex flex-col md:grid md:grid-cols-2 gap-8 pb-32">
+          {
+            post.map(item => {
+              return (
+                <BlogCard
+                  key={item.title}
+                  body={item.body}
+                  title={item.title}
+                  number={item.number}
+                />
+              )
+            })
+          }
+        </main>
+      </div>
     </div >
   )
 }

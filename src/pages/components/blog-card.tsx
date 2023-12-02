@@ -8,8 +8,8 @@ interface BlogCardProps {
 export function BlogCard({ body, title, number }: BlogCardProps) {
   return (
     <a href={`/post/${number}`} className="bg-base-post rounded-lg p-8 flex flex-col gap-5">
-      <div className="flex items-start justify-between">
-        <h2 className="text-base-title font-bold leading-relaxed text-xl max-w-[280px]">
+      <div className="flex items-center md:items-start justify-between">
+        <h2 className="text-base-title font-bold leading-relaxed text-lg md:text-xl max-w-[250px] md:max-w-[280px]">
           {title}
         </h2>
 
