@@ -66,11 +66,11 @@ export function PostDetail() {
             const match = /language-(\w+)/.exec(className || '')
             return match ? (
               <Prism
-                {...rest}
-                PreTag="div"
                 children={String(children).replace(/\n$/, '')}
+                PreTag="div"
                 language={match[1]}
                 style={dracula}
+                // {...rest}
               />
             ) : (
               <code {...rest} className={className}>
