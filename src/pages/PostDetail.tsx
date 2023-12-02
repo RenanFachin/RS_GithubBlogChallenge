@@ -54,32 +54,35 @@ export function PostDetail() {
   return (
     <div className="h-screen">
       <Header />
-      <PostCard title={post.title} comments={post.comments} id={id!} />
+
+      <div className='mx-2'>
+        <PostCard title={post.title} comments={post.comments} id={id!} />
 
 
-      <ReactMarkdown
-        className="max-w-4xl mx-auto flex flex-col gap-3 px-8 py-10 text-base-text"
-        children={markdown}
-        components={{
-          code(props) {
-            const { children, className, ...rest } = props
-            const match = /language-(\w+)/.exec(className || '')
-            return match ? (
-              <Prism
-                children={String(children).replace(/\n$/, '')}
-                PreTag="div"
-                language={match[1]}
-                style={dracula}
+        <ReactMarkdown
+          className="max-w-4xl mx-auto flex flex-col gap-3 px-8 py-10 text-base-text"
+          children={markdown}
+          components={{
+            code(props) {
+              const { children, className, ...rest } = props
+              const match = /language-(\w+)/.exec(className || '')
+              return match ? (
+                <Prism
+                  children={String(children).replace(/\n$/, '')}
+                  PreTag="div"
+                  language={match[1]}
+                  style={dracula}
                 // {...rest}
-              />
-            ) : (
-              <code {...rest} className={className}>
-                {children}
-              </code>
-            )
-          }
-        }}
-      />
+                />
+              ) : (
+                <code {...rest} className={className}>
+                  {children}
+                </code>
+              )
+            }
+          }}
+        />
+      </div>
     </div>
   )
 }

@@ -18,7 +18,7 @@ export function PostCard({ title, comments, id }: UserCardProps) {
   console.log(today)
 
   return (
-    <div className="max-w-4xl w-full bg-base-profile py-8 pl-10 pr-8 -mt-24 rounded-xl shadow-lg z-20 mx-auto min-h-[168px]">
+    <div className="max-w-4xl w-full bg-base-profile py-6 md:py-8 pl-6 pr-6 md:pl-10 md:pr-8 -mt-24 rounded-xl shadow-lg z-20 mx-auto min-h-[168px]">
       <div className="flex flex-col w-full">
         <div className='flex items-center justify-between w-full'>
           <a href='/' className='flex items-center gap-2 text-blue'>
@@ -39,20 +39,20 @@ export function PostCard({ title, comments, id }: UserCardProps) {
           {title}
         </h1>
 
-        <div className='mt-2 flex items-center justify-start gap-8'>
+        <div className='mt-2 flex items-center justify-start gap-4 md:gap-8'>
           <div className='flex items-center gap-2'>
             <GithubLogo className='w-5 h-5 text-base-label' />
-            <p className='text-base-subtitle leading-relaxed'>{userGithubData.name}</p>
+            <p className='text-base-subtitle leading-relaxed text-sm md:text-base'>{userGithubData.name}</p>
           </div>
 
           <div className='flex items-center gap-2'>
             <Calendar className='w-5 h-5 text-base-label' />
-            <p className='text-base-subtitle leading-relaxed'>Há 1 dia</p>
+            <p className='text-base-subtitle leading-relaxed text-sm md:text-base'>Há 1 dia</p>
           </div>
 
           <div className='flex items-center gap-2'>
             <ChatTeardropDots className='w-5 h-5 text-base-label' />
-            <p className='text-base-subtitle leading-relaxed'>{comments} comentários</p>
+            <p className='text-base-subtitle leading-relaxed text-sm md:text-base'>{comments} comentários</p>
           </div>
         </div>
       </div>
